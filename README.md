@@ -1,1 +1,2 @@
-[Конспект за изпит .pdf](https://github.com/Marina-D-G/OOP-theory/files/15233465/default.pdf)
+
+![image](https://github.com/Marina-D-G/OOP-theory/assets/147334873/c843fe34-96ce-45b9-bcfa-13e861c92b15)
