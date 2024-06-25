@@ -12,7 +12,7 @@ bool isCapitalLetter(char ch)
 }
 bool containsOnlySmallChars(const char* str)
 {
-	size_t len = strlen(str);
+	size_t len = strlen(str); //strlen връща size_t
 
 	for (size_t i = 0; i < len; i++)
 	{
@@ -29,7 +29,7 @@ constexpr int AGE_MAX = 90;
 
 class Person
 {
-	char name[NAME_MAX_LEN + 1] = "Unknown";
+	char name[NAME_MAX_LEN + 1] = "Unknown"; //заделяме
 	int age = AGE_MIN;
 
 	bool isValidAge(int age)
@@ -58,7 +58,7 @@ public:
 		setAge(age);
 	}
 
-	int getAge() const 
+	int getAge() const //константни гетъри
 	{
 		return age;
 	}
@@ -71,7 +71,7 @@ public:
 	void setName(const char* name)
 	{
 		if (isValidName(name))
-			strcpy(this->name, name);
+			strcpy(this->name, name); //използваме за const char* - strcpy(destination, source)
 		else
 			strcpy(this->name, "Unknown");
 
