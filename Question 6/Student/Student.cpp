@@ -4,8 +4,16 @@
 
 void Student::copyFrom(const Student& other)
 {
-	setName(other.name);
-	setGrades(other.grades, other.gradesCount);
+	name = new char[strlen(other.name) + 1];
+	strcpy(name, other.name);
+
+	grades = new int[other.gradesCount];
+	for (int i = 0; i < other.gradesCount; i++)
+	{
+		grades[i] = other.grades[i];
+	}
+	
+	gradesCount = other.gradesCount;
 }
 
 void Student::free()
