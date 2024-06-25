@@ -40,10 +40,10 @@ void Event::setName(const char* str)
 	else
 		strcpy(_name, str);
 }
-void Event::validateTimes()
+void Event::validateTimes() //разменя старт и край, ако старт е >
 {
-	if (compareTimes(_startTime, _endTime) <= -1)
+	if (compareTimes(_startTime, _endTime) <= -1) //използва ф-я от Time
 		std::swap(_startTime, _endTime);
 }
 
-Event::Event() : Event("", 1, 1, 1, 0, 0, 0, 0, 0, 0) {}
+Event::Event() : Event("", 1, 1, 1, 0, 0, 0, 0, 0, 0) {} //дефолтния използва другия конструктор
