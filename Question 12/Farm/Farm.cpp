@@ -47,7 +47,7 @@ void Farm::resize()
 void Farm::addAnimal(AnimalType animalType)
 {
   if (animalsCount == capacity)
-    resize();
+    	resize();
   animals[animalsCount++] = animalFactory(animalType);
 }
 
@@ -57,4 +57,58 @@ void Farm::addAnimal(const Animal& animal)
 		resize();
 	animals[animalsCount++] = animal.clone();
 }
-      
+
+Farm::Farm()
+{
+	capacity = 8;
+	size = 0;
+	animals = new Animal*[capacity];
+}
+
+Farm::Farm(const Farm& other)
+{
+	copyFrom(other);
+}
+
+Farm& Farm::operator=(const Farm& other)
+{
+	if (this != &other)
+	{
+		free();
+		copyFrom(other);
+	}
+	return *this;
+}
+
+Farm::Farm(Farm&& other) noexcept
+{
+	moveFrom(std::move(other));
+}
+
+Farm& Farm::operator=(Farm&& other) noexcept
+{
+	if (this != &other)
+	{
+	free();
+	moveFrom(std::move(other));
+	}
+	return *this;
+}
+
+Farm::~Farm()
+{
+	free();
+}
+
+void Farm::roarAll() const
+{
+	for (size_t i = 0; i < animalsCount; i++)
+		animals[i]->roar();
+}
+
+AnimalType Farm::getTypeByIndex(size_t i) const
+{
+	if (i > animalsCount)
+		throw std::out_of_range("Invalid index");
+	return animals[i]->getType();
+}
