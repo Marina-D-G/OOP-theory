@@ -6,22 +6,22 @@ void replaceInFile(char ch, char ch2, fstream& file)
 {
 	while (!file.eof())
 	{
-		char currentSybmol = file.get();
+		char currentSymbol = file.get();
 
-		if (currentSybmol != ch)
-			continue;
-
-		file.seekp(-1, ios::cur);
-		file.put(ch2);
-		file.flush();
+		if (currentSymbol == ch)
+		{
+			file.seekp(-1, std::ios::cur);
+			file.put(ch2);
+			file.flush();
+		}
 	}
 }
 
 int main()
 {
-	fstream file("fileName.txt", ios::in | ios::out);
+	fstream file("fileName.txt", std::ios::in | std::ios::out);
 	
-	if(!file.is_open())
+	if (!file.is_open())
 	{
 		std::cout << "Error while opening the file!" << std::endl;
 		return -1;
