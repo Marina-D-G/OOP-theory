@@ -10,7 +10,7 @@ struct Student
 	int fn;
 };
  
-Student init(const char* name, int age, int fn)
+Student init (const char* name, int age, int fn)
 {
 	Student st;
  
@@ -23,13 +23,13 @@ Student init(const char* name, int age, int fn)
 	return st;
 }
  
-void freeStudent(DynamicNameStudent& st)
+void freeStudent(Student& st)
 {
 	delete[] st.name;
 	st.age = st.fn = 0;
 }
  
-void saveToBinaryFile(std::ofstream& ofs, const DynamicNameStudent& st)
+void saveToBinaryFile(std::ofstream& ofs, const Student& st)
 {
 	int nameLen = strlen(st.name);
 	ofs.write((const char*)&nameLen, sizeof(int));
@@ -39,9 +39,9 @@ void saveToBinaryFile(std::ofstream& ofs, const DynamicNameStudent& st)
 	ofs.write((const char*)&st.fn, sizeof(st.fn));
 }
 
-DynamicNameStudent readFromBinaryFile(std::ifstream& ifs)
+Student readFromBinaryFile(std::ifstream& ifs)
 {
-	DynamicNameStudent st2;
+	Student st2;
  
 	int nameLen;
 	ifs.read((char*)&nameLen, sizeof(nameLen));
@@ -56,12 +56,12 @@ DynamicNameStudent readFromBinaryFile(std::ifstream& ifs)
 	return st2;
 }
  
-void printStudent(const DynamicNameStudent& st)
+void printStudent(const Student& st)
 {
 	std::cout << st.name << " " << st.age << " " << st.fn << std::endl;
 }
  
-void saveStudentsArrayToFile(std::ofstream& ofs, const DynamicNameStudent* arr, size_t arraySize)
+void saveStudentsArrayToFile(std::ofstream& ofs, const Student* arr, size_t arraySize)
 {
 	ofs.write((const char*)&arraySize, sizeof(arraySize));
  
@@ -71,11 +71,11 @@ void saveStudentsArrayToFile(std::ofstream& ofs, const DynamicNameStudent* arr, 
   }
 }
  
-void readStudents(std::ifstream& ifs, DynamicNameStudent*& ptr, size_t& size)
+void readStudents(std::ifstream& ifs, Student*& ptr, size_t& size)
 {
 	ifs.read((char*)&size, sizeof(size));
  
-	ptr = new DynamicNameStudent[size];
+	ptr = new Student[size];
  
 	for (size_t i = 0; i < size; i++)
   {
@@ -91,7 +91,7 @@ int main()
 		if (!ofs.is_open())
 			return -1;
  
-		DynamicNameStudent arr[3];
+		Student arr[3];
 		arr[0] = init("Ivan", 10, 20);
 		arr[1] = init("Peter", 41, 44);
 		arr[2] = init("Nikolay", 99, 0);
@@ -108,7 +108,7 @@ int main()
 		std::ifstream ifs("arrStudents.dat", std::ios::in | std::ios::binary);
 		if (!ifs.is_open())
 			return -1;
-		DynamicNameStudent* arr;
+		Student* arr;
 		size_t size;
  
 		readStudents(ifs, arr, size);
