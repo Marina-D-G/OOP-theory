@@ -28,9 +28,7 @@ Teacher::Teacher(const char* name, int age, const char* const* subjects, size_t 
 
 void Teacher::free()
 {
-	for (size_t i = 0; i < subjectsCount; i++)
-		delete[] subjects[i];
-	delete[] subjects;
+	freeArraysOfString(subjects, size);
 }
 
 void Teacher::copyFrom(const Teacher& other)
