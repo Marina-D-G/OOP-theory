@@ -10,6 +10,6 @@ void Cat::roar() const
 
 Animal* Cat::clone() const 
 {
-	Animal* newObj = new  (std::nothrow)Cat(*this); //copy constr of Mouse
+	Animal* newObj = new  (std::nothrow)Cat(*this); //copy constr of Cat
 	return newObj;
 }
