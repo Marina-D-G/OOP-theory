@@ -99,7 +99,7 @@ struct Negation : UnaryOperation
 	Negation(BooleanExpression* expr) : UnaryOperation(expr) {}
 	virtual BooleanExpression* clone() const override
 	{
-		return new Negation(expr->clone());
+		return new Negation(expr->clone());//!!!
 	}
 	bool eval(const BooleanInterpretation& interpet) const override
 	{
