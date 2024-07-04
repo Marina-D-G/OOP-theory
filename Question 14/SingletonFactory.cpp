@@ -48,7 +48,7 @@ public:
 		return instance;
 	}
 
-	SingletonFactory(const SingletonFactory& other) = delete;
+	SingletonFactory(const SingletonFactory& other) = delete;//!!!!
 	SingletonFactory& operator=(const SingletonFactory& other) = delete;
 };
 
