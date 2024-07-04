@@ -22,7 +22,7 @@ protected:
 
 private:
 	point* points;
-	size_t pointsCount;
+	size_t pointsCount;//не се увеличава, а си остава като този подаден в началото
 
 	void copyFrom(const Shape& other);
 	void moveFrom(Shape&& other);
