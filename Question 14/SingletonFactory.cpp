@@ -43,7 +43,7 @@ public:
 		}
 	}
 
-	static SingletonFactory& getInstance() {//статик функция, за да можем да извикаме без инстанция на класа
+	static SingletonFactory& getInstance() {//статик функция, за да можем да извикаме без инстанция на класа, тъй като конструкторът е private
 		static SingletonFactory instance;
 		return instance;
 	}
