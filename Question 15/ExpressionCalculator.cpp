@@ -46,7 +46,7 @@ private:
 struct BooleanExpression
 {
 	BooleanExpression() = default;
-	BooleanExpression(const BooleanExpression&) = delete;
+	BooleanExpression(const BooleanExpression&) = delete;//!!
 	BooleanExpression& operator=(const BooleanExpression&) = delete;
 
 	virtual bool eval(const BooleanInterpretation& interpet) const = 0;
@@ -133,7 +133,7 @@ struct Conjunction : BinaryOperation
 
 	virtual BooleanExpression* clone() const override
 	{
-		return new Conjunction(left->clone(), right->clone());
+		return new Conjunction(left->clone(), right->clone());//!!
 	}
 
 	bool eval(const BooleanInterpretation& interpet) const override
